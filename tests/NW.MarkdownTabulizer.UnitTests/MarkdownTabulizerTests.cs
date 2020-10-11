@@ -14,7 +14,7 @@ namespace NW.MarkdownTabulizer.UnitTests
 
             new TestCaseData(
                 new TestDelegate( () => 
-                    new MarkdownTabulizer().ToMarkdownTable(false, false, null)
+                    new MarkdownTabulizer().ToMarkdownLine(false, false, null)
                 ),
                 typeof(ArgumentNullException),
                 new ArgumentNullException("values").Message
@@ -22,7 +22,7 @@ namespace NW.MarkdownTabulizer.UnitTests
 
             new TestCaseData(
                 new TestDelegate( () =>
-                    new MarkdownTabulizer().ToMarkdownTable(false, false, new string[]{ })
+                    new MarkdownTabulizer().ToMarkdownLine(false, false, new string[]{ })
                 ),
                 typeof(ArgumentException),
                 MessageCollection.CantHaveZeroItems.Invoke("values")

@@ -4,9 +4,14 @@ namespace NW.MarkdownTabulizer
 {
     public interface IMarkdownTabulizer
     {
-        string ToMarkdownTable(bool smallerFontSize, bool isHeader, params string[] values);
-        string ToMarkdownTable<T>(bool smallerFontSize, bool isHeader, T obj);
-        string ToMarkdownTable<T>(List<T> rows, bool smallerFontSize, NullHandlingStrategies strategy);
+
+        string ToMarkdownLine
+            (bool smallerFontSize, bool isHeader, params string[] values);
+        string ToMarkdown<T>
+            (bool smallerFontSize, OutputOptions option, T obj);
+        string ToMarkdownTable<T>
+            (bool smallerFontSize, NullHandlingStrategies strategy, List<T> rows);
+
     }
 }
 

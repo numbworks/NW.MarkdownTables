@@ -1,11 +1,19 @@
-﻿namespace NW.MarkdownTabulizer
+﻿using System;
+using System.Collections.Generic;
+
+namespace NW.MarkdownTabulizer
 {
     public enum NullHandlingStrategies
     {
 
+        /// <summary>If one row is null, an <seealso cref="ArgumentNullException"/> will be thrown.</summary>
         DoNothing,
+
+        /// <summary>All the null rows will be removed from the provided <seealso cref="List{T}"/> before processing it.</summary>
         RemoveNulls,
-        ReplaceNullsWithEmptyObjects,
+
+        /// <summary>All the null rows will be replaced with null Markdown lines.</summary>
+        ReplaceNullsWithNullMarkdownLines,
 
     }
 
