@@ -43,8 +43,8 @@ namespace NW.MarkdownTabulizer
         {
 
             if (option != OutputOptions.OnlyHeader
-                    || option != OutputOptions.OnlyRow
-                    || option != OutputOptions.FullTable)
+                    && option != OutputOptions.OnlyRow
+                    && option != OutputOptions.FullTable)
                 throw new ArgumentException(MessageCollection.ProvidedOutputOptionNotValid.Invoke(option));
             if (obj == null)
                 throw new ArgumentNullException(nameof(obj));
@@ -67,8 +67,8 @@ namespace NW.MarkdownTabulizer
         {
 
             if (strategy != NullHandlingStrategies.DoNothing
-                    || strategy != NullHandlingStrategies.RemoveNulls
-                    || strategy != NullHandlingStrategies.ReplaceNullsWithNullMarkdownLines)
+                    && strategy != NullHandlingStrategies.RemoveNulls
+                    && strategy != NullHandlingStrategies.ReplaceNullsWithNullMarkdownLines)
                 throw new ArgumentException(MessageCollection.ProvidedNullHandlingStrategyNotValid.Invoke(strategy));
             if (rows == null)
                 throw new ArgumentNullException(nameof(rows));

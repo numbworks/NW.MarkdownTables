@@ -8,8 +8,7 @@ namespace NW.MarkdownTabulizer.UnitTests
     {
 
         // Fields
-
-        private static TestCaseData[] toMarkdownTableExceptions =
+        private static TestCaseData[] toMarkdownLineExceptions =
         {
 
             new TestCaseData(
@@ -26,14 +25,55 @@ namespace NW.MarkdownTabulizer.UnitTests
                 ),
                 typeof(ArgumentException),
                 MessageCollection.CantHaveZeroItems.Invoke("values")
+                )
+
+        };
+        private static TestCaseData[] toMarkdownExceptions =
+        {
+
+            new TestCaseData(
+                new TestDelegate( () =>
+                    new MarkdownTabulizer()
+                        .ToMarkdown(
+                            false,
+                            ObjectMother.NonExistantOutputOption, 
+                            ObjectMother.Table2_Source_Object
+                        )),
+                typeof(ArgumentException),
+                MessageCollection.ProvidedOutputOptionNotValid.Invoke(ObjectMother.NonExistantOutputOption)
                 ),
+
+            new TestCaseData(
+                new TestDelegate( () =>
+                    new MarkdownTabulizer()
+                        .ToMarkdown<Car>(
+                            false,
+                            OutputOptions.OnlyRow,
+                            null
+                        )),
+                typeof(ArgumentNullException),
+                new ArgumentNullException("obj").Message
+                )
 
         };
 
         // SetUp
         // Tests
-        [TestCaseSource(nameof(toMarkdownTableExceptions))]
-        public void ToMarkdownTable_ShouldThrowACertainException_WhenUnproperArguments
+        [TestCaseSource(nameof(toMarkdownLineExceptions))]
+        public void ToMarkdownLine_ShouldThrowACertainException_WhenUnproperArguments
+            (TestDelegate del, Type tyExpected, string strMessage)
+        {
+
+            // Arrange
+            // Act
+            // Assert
+            Exception objActual = Assert.Throws(tyExpected, del);
+            Assert.AreEqual(strMessage, objActual.Message);
+
+        }
+
+        [TestCaseSource(nameof(toMarkdownExceptions))]
+        public void ToMarkdown_ShouldThrowACertainException_WhenUnproperArguments
             (TestDelegate del, Type tyExpected, string strMessage)
         {
 

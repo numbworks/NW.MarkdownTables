@@ -153,6 +153,8 @@ namespace NW.MarkdownTabulizer.UnitTests
             );
         #endregion
 
+        internal static OutputOptions NonExistantOutputOption = (OutputOptions)(-1);
+
         // Methods (public)
         // Methods (private)
 
