@@ -38,7 +38,7 @@ namespace NW.MarkdownTabulizer.UnitTests
                         .ToMarkdown(
                             false,
                             ObjectMother.NonExistantOutputOption, 
-                            ObjectMother.Table2_Source_Object
+                            ObjectMother.Table1_Input_Object
                         )),
                 typeof(ArgumentException),
                 MessageCollection.ProvidedOutputOptionNotValid.Invoke(ObjectMother.NonExistantOutputOption)
@@ -66,7 +66,7 @@ namespace NW.MarkdownTabulizer.UnitTests
                         .ToMarkdownTable(
                             false,
                             ObjectMother.NonExistantNullHandlingStrategy,
-                            ObjectMother.Table3_Source_Object
+                            ObjectMother.Table2_Input_List
                         )),
                 typeof(ArgumentException),
                 MessageCollection.ProvidedNullHandlingStrategyNotValid.Invoke(ObjectMother.NonExistantNullHandlingStrategy)
@@ -75,10 +75,10 @@ namespace NW.MarkdownTabulizer.UnitTests
             new TestCaseData(
                 new TestDelegate( () =>
                     new MarkdownTabulizer()
-                        .ToMarkdownTable(
+                        .ToMarkdownTable<Car>(
                             false,
                             NullHandlingStrategies.RemoveNulls,
-                            ObjectMother.Table3_Source_Object
+                            null
                         )),
                 typeof(ArgumentNullException),
                 new ArgumentNullException("rows").Message
@@ -95,6 +95,24 @@ namespace NW.MarkdownTabulizer.UnitTests
                 typeof(ArgumentException),
                 MessageCollection.CantHaveZeroItems.Invoke("rows")
                 )
+
+        };
+        private static TestCaseData[] toMarkdownLineTestCases =
+        {
+
+            new TestCaseData( 
+                    true,
+                    true,
+                    ObjectMother.Line_Input_Header,
+                    ObjectMother.Line_Output_SmallerFontSizeTrueIsHeaderTrue
+                ),
+
+            new TestCaseData(
+                    false,
+                    true,
+                    ObjectMother.Line_Input_Header,
+                    ObjectMother.Line_Output_SmallerFontSizeFalseIsHeaderTrue
+                ),
 
         };
 
@@ -136,6 +154,20 @@ namespace NW.MarkdownTabulizer.UnitTests
             // Assert
             Exception objActual = Assert.Throws(tyExpected, del);
             Assert.AreEqual(strMessage, objActual.Message);
+
+        }
+
+        [TestCaseSource(nameof(toMarkdownLineTestCases))]
+        public void ToMarkdownLine_ShouldReturnExpectedString_WhenProperArguments
+            (bool smallerFontSize, bool isHeader, string[] values, string expected)
+        {
+
+            // Arrange
+            // Act
+            string actual = new MarkdownTabulizer().ToMarkdownLine(smallerFontSize, isHeader, values);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
 
         }
 
