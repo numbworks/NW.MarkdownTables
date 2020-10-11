@@ -1,4 +1,4 @@
-﻿namespace Workbench
+﻿namespace NW.MarkdownTabulizer
 {
     public enum NullHandlingStrategies
     {
