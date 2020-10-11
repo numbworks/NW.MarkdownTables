@@ -13,7 +13,7 @@ namespace NW.MarkdownTabulizer
         public MarkdownTabulizer() { }
 
         // Methods (public)
-        public string ToMarkdownHeader
+        public string ToMarkdownRow
             (bool smallerFontSize, params string[] values)
         {
 
@@ -25,15 +25,20 @@ namespace NW.MarkdownTabulizer
             return ToMarkdownLine(smallerFontSize, values);
 
         }
-        public string ToMarkdownRow
+        public string ToMarkdownHeader
             (bool smallerFontSize, params string[] values)
         {
 
-            string line = ToMarkdownHeader(smallerFontSize, values);
-            line += Environment.NewLine;
-            line += CreateMarkdownRow("---", (uint)values.Length);
+            if (values == null)
+                throw new ArgumentNullException(nameof(values));
+            if (values.Length == 0)
+                throw new ArgumentException(MessageCollection.CantHaveZeroItems.Invoke(nameof(values)));
 
-            return line;
+            string header = ToMarkdownLine(smallerFontSize, values);
+            header += Environment.NewLine;
+            header += CreateMarkdownRow("---", (uint)values.Length);
+
+            return header;
 
         }       
         public string ToMarkdown<T>
@@ -48,15 +53,15 @@ namespace NW.MarkdownTabulizer
                 throw new ArgumentNullException(nameof(obj));
 
             if (option == OutputOptions.OnlyHeader)
-                return ToMarkdownHeader(smallerFontSize, GetPropertyNames(obj));
+                return ToMarkdownRow(smallerFontSize, GetPropertyNames(obj));
 
             if (option == OutputOptions.OnlyRow)
-                return ToMarkdownRow(smallerFontSize, GetPropertyValues(obj));
+                return ToMarkdownHeader(smallerFontSize, GetPropertyValues(obj));
 
             return string.Join(
-                    ToMarkdownHeader(smallerFontSize, GetPropertyNames(obj)),
+                    ToMarkdownRow(smallerFontSize, GetPropertyNames(obj)),
                     Environment.NewLine,
-                    ToMarkdownRow(smallerFontSize, GetPropertyValues(obj))
+                    ToMarkdownHeader(smallerFontSize, GetPropertyValues(obj))
                 );
 
         }
