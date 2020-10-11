@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1169
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NW.MarkdownTabulizer", "NW.MarkdownTabulizer\NW.MarkdownTabulizer.csproj", "{42350748-E7DB-4CAB-BBB2-4C8879EAE6D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NW.MarkdownTabulizer", "src\NW.MarkdownTabulizer\NW.MarkdownTabulizer.csproj", "{42350748-E7DB-4CAB-BBB2-4C8879EAE6D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
