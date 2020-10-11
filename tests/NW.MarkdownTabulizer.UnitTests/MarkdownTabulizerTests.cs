@@ -12,20 +12,28 @@ namespace NW.MarkdownTabulizer.UnitTests
         private static TestCaseData[] toMarkdownTableExceptions =
         {
 
-            // Constructor
             new TestCaseData(
-                new TestDelegate( /* action */ ),
+                new TestDelegate( () => 
+                    new MarkdownTabulizer().ToMarkdownTable(false, false, null)
+                ),
                 typeof(ArgumentNullException),
-                new ArgumentNullException("null_argument_name").Message
-                )
-			/* ... */
+                new ArgumentNullException("values").Message
+                ),
+
+            new TestCaseData(
+                new TestDelegate( () =>
+                    new MarkdownTabulizer().ToMarkdownTable(false, false, new string[]{ })
+                ),
+                typeof(ArgumentException),
+                MessageCollection.CantHaveZeroItems.Invoke("values")
+                ),
 
         };
 
         // SetUp
         // Tests
         [TestCaseSource(nameof(toMarkdownTableExceptions))]
-        public void Method_ShouldThrowACertainException_WhenUnproperArguments
+        public void ToMarkdownTable_ShouldThrowACertainException_WhenUnproperArguments
             (TestDelegate del, Type tyExpected, string strMessage)
         {
 
