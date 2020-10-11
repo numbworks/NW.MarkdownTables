@@ -8,29 +8,32 @@ namespace NW.MarkdownTabulizer.UnitTests
 
         // Fields
         // Properties
-        #region Line
-        internal static string[] Line_Input_Header 
+        #region Header
+        internal static string[] Header_Input 
             = new string[] { "BookTitle", "Year", "Pages", "ReadDate", "Publisher" };
-        internal static string[] Line_Input_Row1 
-            = new string[] { "Learn Powershell Core 6.0", "2018", "736", "2020-04-03", "Packt" };
-        internal static string Line_Output_SmallerFontSizeTrueIsHeaderTrue = string.Concat(
+        internal static string Header_Output_SmallerFontSizeTrue = string.Concat(
             "|<sub>BookTitle</sub>|<sub>Year</sub>|<sub>Pages</sub>|<sub>ReadDate</sub>|<sub>Publisher</sub>|",
             Environment.NewLine,
             "|---|---|---|---|---|"
             );
-        internal static string Line_Output_SmallerFontSizeFalseIsHeaderTrue = string.Concat(
+        internal static string Header_Output_SmallerFontSizeFalse = string.Concat(
             "|BookTitle|Year|Pages|ReadDate|Publisher|",
             Environment.NewLine,
             "|---|---|---|---|---|"
             );
-        internal static string Line_Output_SmallerFontSizeTrueIsHeaderFalse = string.Concat(
+        #endregion
+
+        #region Row1
+        internal static string[] Row1_Input
+            = new string[] { "Learn Powershell Core 6.0", "2018", "736", "2020-04-03", "Packt" };
+        internal static string Row1_Output_SmallerFontSizeTrue = string.Concat(
             "|<sub>Learn Powershell Core 6.0</sub>|<sub>2018</sub>|<sub>736</sub>|<sub>2020-04-03</sub>|<sub>Packt</sub>|"
             );
-        internal static string Line_Output_SmallerFontSizeFalseIsHeaderFalse = string.Concat(
+        internal static string Row1_Output_SmallerFontSizeFalse = string.Concat(
             "|Learn Powershell Core 6.0|2018|736|2020-04-03|Packt|"
             );
         #endregion
-        
+
         #region Table1
         internal static Car Table1_Input_Object = new Car() { Name = "Dodge Ram", Wheels = 4 };
         internal static string Table1_OnlyHeaderSmallerFontSizeTrue = string.Concat(

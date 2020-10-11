@@ -122,14 +122,14 @@ namespace NW.MarkdownTabulizer.UnitTests
 
             new TestCaseData( 
                     true,
-                    ObjectMother.Line_Input_Header,
-                    ObjectMother.Line_Output_SmallerFontSizeTrueIsHeaderTrue
+                    ObjectMother.Header_Input,
+                    ObjectMother.Header_Output_SmallerFontSizeTrue
                 ),
 
             new TestCaseData(
                     false,
-                    ObjectMother.Line_Input_Header,
-                    ObjectMother.Line_Output_SmallerFontSizeFalseIsHeaderTrue
+                    ObjectMother.Header_Input,
+                    ObjectMother.Header_Output_SmallerFontSizeFalse
                 )
 
         };
@@ -138,14 +138,14 @@ namespace NW.MarkdownTabulizer.UnitTests
 
             new TestCaseData(
                     true,
-                    ObjectMother.Line_Input_Row1,
-                    ObjectMother.Line_Output_SmallerFontSizeTrueIsHeaderFalse
+                    ObjectMother.Row1_Input,
+                    ObjectMother.Row1_Output_SmallerFontSizeTrue
                 ),
 
             new TestCaseData(
                     false,
-                    ObjectMother.Line_Input_Row1,
-                    ObjectMother.Line_Output_SmallerFontSizeFalseIsHeaderFalse
+                    ObjectMother.Row1_Input,
+                    ObjectMother.Row1_Output_SmallerFontSizeFalse
                 )
 
         };
