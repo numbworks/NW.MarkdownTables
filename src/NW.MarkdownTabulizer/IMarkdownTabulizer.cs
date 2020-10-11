@@ -5,8 +5,10 @@ namespace NW.MarkdownTabulizer
     public interface IMarkdownTabulizer
     {
 
-        string ToMarkdownLine
-            (bool smallerFontSize, bool isHeader, params string[] values);
+        string ToMarkdownHeader
+            (bool smallerFontSize, params string[] values);
+        string ToMarkdownRow
+            (bool smallerFontSize, params string[] values);
         string ToMarkdown<T>
             (bool smallerFontSize, OutputOptions option, T obj);
         string ToMarkdownTable<T>

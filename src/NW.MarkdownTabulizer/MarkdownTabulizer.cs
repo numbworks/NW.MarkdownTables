@@ -13,8 +13,8 @@ namespace NW.MarkdownTabulizer
         public MarkdownTabulizer() { }
 
         // Methods (public)
-        public string ToMarkdownLine
-            (bool smallerFontSize, bool isHeader, params string[] values)
+        public string ToMarkdownHeader
+            (bool smallerFontSize, params string[] values)
         {
 
             if (values == null)
@@ -22,22 +22,20 @@ namespace NW.MarkdownTabulizer
             if (values.Length == 0)
                 throw new ArgumentException(MessageCollection.CantHaveZeroItems.Invoke(nameof(values)));
 
-            string line = $"|{string.Join("|", values)}|";
+            return ToMarkdownLine(smallerFontSize, values);
 
-            if (smallerFontSize)
-                line = $"|<sub>{string.Join("</sub>|<sub>", values)}</sub>|";
+        }
+        public string ToMarkdownRow
+            (bool smallerFontSize, params string[] values)
+        {
 
-            if (isHeader)
-            {
-
-                line += Environment.NewLine;
-                line += CreateMarkdownRow("---", (uint)values.Length);
-
-            }
+            string line = ToMarkdownHeader(smallerFontSize, values);
+            line += Environment.NewLine;
+            line += CreateMarkdownRow("---", (uint)values.Length);
 
             return line;
 
-        }
+        }       
         public string ToMarkdown<T>
             (bool smallerFontSize, OutputOptions option, T obj)
         {
@@ -50,15 +48,15 @@ namespace NW.MarkdownTabulizer
                 throw new ArgumentNullException(nameof(obj));
 
             if (option == OutputOptions.OnlyHeader)
-                return ToMarkdownLine(smallerFontSize, true, GetPropertyNames(obj));
+                return ToMarkdownHeader(smallerFontSize, GetPropertyNames(obj));
 
             if (option == OutputOptions.OnlyRow)
-                return ToMarkdownLine(smallerFontSize, false, GetPropertyValues(obj));
+                return ToMarkdownRow(smallerFontSize, GetPropertyValues(obj));
 
             return string.Join(
-                    ToMarkdownLine(smallerFontSize, true, GetPropertyNames(obj)),
+                    ToMarkdownHeader(smallerFontSize, GetPropertyNames(obj)),
                     Environment.NewLine,
-                    ToMarkdownLine(smallerFontSize, false, GetPropertyValues(obj))
+                    ToMarkdownRow(smallerFontSize, GetPropertyValues(obj))
                 );
 
         }
@@ -93,7 +91,19 @@ namespace NW.MarkdownTabulizer
         }
 
         // Methods (private)
-        private string CreateMarkdownRow(string token, uint length, bool includeSubTags = false)
+        private string ToMarkdownLine
+            (bool smallerFontSize, params string[] values)
+        {
+
+            string line = $"|{string.Join("|", values)}|";
+            if (smallerFontSize)
+                line = $"|<sub>{string.Join("</sub>|<sub>", values)}</sub>|";
+
+            return line;
+
+        }
+        private string CreateMarkdownRow
+            (string token, uint length, bool includeSubTags = false)
         {
 
             string[] repetitions = Enumerable.Repeat(token, (int)length).ToArray();
@@ -119,7 +129,8 @@ namespace NW.MarkdownTabulizer
         }
         private uint GetPropertyCount(Type t)
             => (uint)t.GetProperties().Length;
-        private string ProcessRow<T>(bool smallerFontSize, NullHandlingStrategies strategy, T row)
+        private string ProcessRow<T>
+            (bool smallerFontSize, NullHandlingStrategies strategy, T row)
         {
 
             string str = string.Empty;
