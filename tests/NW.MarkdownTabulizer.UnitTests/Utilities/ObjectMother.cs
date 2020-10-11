@@ -142,7 +142,6 @@ namespace NW.MarkdownTabulizer.UnitTests
             );
         #endregion
 
-        internal static OutputOptions NonExistantOutputOption = (OutputOptions)(-1);
         internal static NullHandlingStrategies NonExistantNullHandlingStrategy = (NullHandlingStrategies)(-1);
 
         // Methods (public)

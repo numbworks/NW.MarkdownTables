@@ -25,6 +25,15 @@ namespace NW.MarkdownTabulizer
             return ToMarkdownLine(smallerFontSize, values);
 
         }
+        public string ToMarkdownRow<T>(bool smallerFontSize, T obj)
+        {
+
+            if (obj == null)
+                throw new ArgumentNullException(nameof(obj));
+
+            return ToMarkdownRow(smallerFontSize, GetPropertyNames(obj));
+
+        }
         public string ToMarkdownHeader
             (bool smallerFontSize, params string[] values)
         {
@@ -39,15 +48,6 @@ namespace NW.MarkdownTabulizer
             header += CreateMarkdownRow("---", (uint)values.Length);
 
             return header;
-
-        }
-        public string ToMarkdownRow<T>(bool smallerFontSize, T obj)
-        {
-
-            if (obj == null)
-                throw new ArgumentNullException(nameof(obj));
-
-            return ToMarkdownRow(smallerFontSize, GetPropertyNames(obj));
 
         }
         public string ToMarkdownHeader<T>(bool smallerFontSize, T obj)
@@ -88,7 +88,7 @@ namespace NW.MarkdownTabulizer
             if (strategy == NullHandlingStrategies.RemoveNulls)
                 rows = rows.Where(row => row != null).ToList();
 
-            string str = ToMarkdown(smallerFontSize, OutputOptions.OnlyHeader, rows[0]);
+            string str = ToMarkdownHeader(smallerFontSize, rows[0]);
             if (rows.Count > 1)
             {
 
@@ -151,7 +151,7 @@ namespace NW.MarkdownTabulizer
                     && strategy == NullHandlingStrategies.ReplaceNullsWithNullMarkdownLines)
                 str += CreateMarkdownRow("null", GetPropertyCount(typeof(T)), smallerFontSize);
             else
-                str += ToMarkdown(smallerFontSize, OutputOptions.OnlyRow, row);
+                str += ToMarkdownRow(smallerFontSize, row);
 
             str += Environment.NewLine;
 

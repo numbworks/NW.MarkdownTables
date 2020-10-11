@@ -12,6 +12,7 @@ namespace NW.MarkdownTabulizer.UnitTests
         private static TestCaseData[] toMarkdownRowExceptions =
         {
 
+            // ToMarkdownRow()
             new TestCaseData(
                 new TestDelegate( () => 
                     new MarkdownTabulizer().ToMarkdownRow(false, null)
@@ -26,12 +27,22 @@ namespace NW.MarkdownTabulizer.UnitTests
                 ),
                 typeof(ArgumentException),
                 MessageCollection.CantHaveZeroItems.Invoke("values")
+                ),
+
+            // ToMarkdownRow<T>()
+            new TestCaseData(
+                new TestDelegate( () =>
+                    new MarkdownTabulizer().ToMarkdownRow<Car>(false, null)
+                ),
+                typeof(ArgumentNullException),
+                new ArgumentNullException("obj").Message
                 )
 
         };
         private static TestCaseData[] toMarkdownHeaderExceptions =
         {
 
+            // ToMarkdownHeader()
             new TestCaseData(
                 new TestDelegate( () =>
                     new MarkdownTabulizer().ToMarkdownHeader(false, null)
@@ -46,32 +57,13 @@ namespace NW.MarkdownTabulizer.UnitTests
                 ),
                 typeof(ArgumentException),
                 MessageCollection.CantHaveZeroItems.Invoke("values")
-                )
-
-        };
-        private static TestCaseData[] toMarkdownExceptions =
-        {
-
-            new TestCaseData(
-                new TestDelegate( () =>
-                    new MarkdownTabulizer()
-                        .ToMarkdown(
-                            false,
-                            ObjectMother.NonExistantOutputOption, 
-                            ObjectMother.Table1_Input_Object
-                        )),
-                typeof(ArgumentException),
-                MessageCollection.ProvidedOutputOptionNotValid.Invoke(ObjectMother.NonExistantOutputOption)
                 ),
 
+            // ToMarkdownHeader<T>()
             new TestCaseData(
                 new TestDelegate( () =>
-                    new MarkdownTabulizer()
-                        .ToMarkdown<Car>(
-                            false,
-                            OutputOptions.OnlyRow,
-                            null
-                        )),
+                    new MarkdownTabulizer().ToMarkdownHeader<Car>(false, null)
+                ),
                 typeof(ArgumentNullException),
                 new ArgumentNullException("obj").Message
                 )
@@ -80,6 +72,16 @@ namespace NW.MarkdownTabulizer.UnitTests
         private static TestCaseData[] toMarkdownTableExceptions =
         {
 
+            // ToMarkdownTable<T>()
+            new TestCaseData(
+                new TestDelegate( () =>
+                    new MarkdownTabulizer().ToMarkdownTable<Car>(false, null)
+                ),
+                typeof(ArgumentNullException),
+                new ArgumentNullException("obj").Message
+                ),
+
+            // ToMarkdownTable<T>(..., rows)
             new TestCaseData(
                 new TestDelegate( () =>
                     new MarkdownTabulizer()
@@ -167,19 +169,6 @@ namespace NW.MarkdownTabulizer.UnitTests
 
         [TestCaseSource(nameof(toMarkdownHeaderExceptions))]
         public void ToMarkdownHeader_ShouldThrowACertainException_WhenUnproperArguments
-            (TestDelegate del, Type tyExpected, string strMessage)
-        {
-
-            // Arrange
-            // Act
-            // Assert
-            Exception objActual = Assert.Throws(tyExpected, del);
-            Assert.AreEqual(strMessage, objActual.Message);
-
-        }
-
-        [TestCaseSource(nameof(toMarkdownExceptions))]
-        public void ToMarkdown_ShouldThrowACertainException_WhenUnproperArguments
             (TestDelegate del, Type tyExpected, string strMessage)
         {
 
