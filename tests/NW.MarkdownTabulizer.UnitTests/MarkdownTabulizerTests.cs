@@ -199,6 +199,38 @@ namespace NW.MarkdownTabulizer.UnitTests
                 ),
 
         };
+        private static TestCaseData[] toMarkdownTableListTestCases =
+        {
+
+            new TestCaseData(
+                    true,
+                    NullHandlingStrategies.RemoveNulls,
+                    ObjectMother.List1,
+                    ObjectMother.List1_TableSmallerFontSizeTrueRemoveNulls
+                ),
+
+            new TestCaseData(
+                    false,
+                    NullHandlingStrategies.RemoveNulls,
+                    ObjectMother.List1,
+                    ObjectMother.List1_TableSmallerFontSizeFalseRemoveNulls
+                ),
+
+            new TestCaseData(
+                    true,
+                    NullHandlingStrategies.ReplaceNullsWithNullMarkdownLines,
+                    ObjectMother.List1,
+                    ObjectMother.List1_TableSmallerFontSizeTrueReplaceNulls
+                ),
+
+            new TestCaseData(
+                    false,
+                    NullHandlingStrategies.ReplaceNullsWithNullMarkdownLines,
+                    ObjectMother.List1,
+                    ObjectMother.List1_TableSmallerFontSizeFalseReplaceNulls
+                )
+
+        };
 
         // SetUp
         // Tests
@@ -311,6 +343,19 @@ namespace NW.MarkdownTabulizer.UnitTests
 
         }
 
+        [TestCaseSource(nameof(toMarkdownTableListTestCases))]
+        public void ToMarkdownTableList_ShouldReturnExpectedString_WhenProperArguments<T>
+            (bool smallerFontSize, NullHandlingStrategies strategy, List<T> rows, string expected)
+        {
+
+            // Arrange
+            // Act
+            string actual = new MarkdownTabulizer().ToMarkdownTable(smallerFontSize, strategy, rows);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+
+        }
 
         // TearDown
         // Support methods

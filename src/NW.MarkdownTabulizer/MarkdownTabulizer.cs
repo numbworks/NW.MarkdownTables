@@ -88,15 +88,9 @@ namespace NW.MarkdownTabulizer
             if (strategy == NullHandlingStrategies.RemoveNulls)
                 rows = rows.Where(row => row != null).ToList();
 
-            string str = ToMarkdownHeader(smallerFontSize, rows[0]);
+            string str = ToMarkdownHeader(smallerFontSize, rows[0]); // Whatever object in the list is fine
             if (rows.Count > 1)
-            {
-
-                str += Environment.NewLine;
-                foreach (T row in rows)
-                    str += ProcessRow(smallerFontSize, strategy, row);
-
-            }
+                str += ProcessRows(smallerFontSize, strategy, rows);
 
             return str;
 
@@ -151,9 +145,24 @@ namespace NW.MarkdownTabulizer
                     && strategy == NullHandlingStrategies.ReplaceNullsWithNullMarkdownLines)
                 str += CreateMarkdownRow("null", GetPropertyCount(typeof(T)), smallerFontSize);
             else
-                str += ToMarkdownRow(smallerFontSize, row);
+                str += ToMarkdownRow(smallerFontSize, row);          
 
-            str += Environment.NewLine;
+            return str;
+
+        }
+        private string ProcessRows<T>
+            (bool smallerFontSize, NullHandlingStrategies strategy, List<T> rows)
+        {
+
+            string str = Environment.NewLine;
+            for (int i = 0; i < rows.Count; i++)
+            {
+                str += ProcessRow(smallerFontSize, strategy, rows[i]);
+
+                if (i != (rows.Count - 1))
+                    str += Environment.NewLine;
+
+            }
 
             return str;
 

@@ -80,46 +80,31 @@ namespace NW.MarkdownTabulizer.UnitTests
                 null
 
             };
-        internal static string List1_HeaderSmallerFontSizeTrue = string.Concat(
-            "|Name|Wheels|",
-            "|---|---|"
-            );
-        internal static string List1_HeaderSmallerFontSizeFalse = string.Concat(
+        internal static string List1_TableSmallerFontSizeTrueRemoveNulls = string.Concat(
             "|<sub>Name</sub>|<sub>Wheels</sub>|",
-            "|---|---|"
-            );
-        internal static string List1_RowSmallerFontSizeTrue = string.Concat(
-            "|Dodge Ram|4|",
             Environment.NewLine,
-            "|Nissan Skyline|4|",
+            "|---|---|",
             Environment.NewLine,
-            "|null|4|",
-            Environment.NewLine,
-            "|null|null|"
-            );
-        internal static string List1_RowSmallerFontSizeFalse = string.Concat(
             "|<sub>Dodge Ram</sub>|<sub>4</sub>|",
             Environment.NewLine,
             "|<sub>Nissan Skyline</sub>|<sub>4</sub>|",
             Environment.NewLine,
-            "|<sub>null</sub>|<sub>4</sub>|",
-            Environment.NewLine,
-            "|<sub>null</sub>|<sub>null</sub>|"
+            "|<sub>null</sub>|<sub>4</sub>|"
             );
-        internal static string List1_TableSmallerFontSizeTrue = string.Concat(
+        internal static string List1_TableSmallerFontSizeFalseRemoveNulls = string.Concat(
             "|Name|Wheels|",
+            Environment.NewLine,
             "|---|---|",
             Environment.NewLine,
             "|Dodge Ram|4|",
             Environment.NewLine,
             "|Nissan Skyline|4|",
             Environment.NewLine,
-            "|null|4|",
-            Environment.NewLine,
-            "|null|null|"
+            "|null|4|"
             );
-        internal static string List1_TableSmallerFontSizeFalse = string.Concat(
+        internal static string List1_TableSmallerFontSizeTrueReplaceNulls = string.Concat(
             "|<sub>Name</sub>|<sub>Wheels</sub>|",
+            Environment.NewLine,
             "|---|---|",
             Environment.NewLine,
             "|<sub>Dodge Ram</sub>|<sub>4</sub>|",
@@ -129,6 +114,19 @@ namespace NW.MarkdownTabulizer.UnitTests
             "|<sub>null</sub>|<sub>4</sub>|",
             Environment.NewLine,
             "|<sub>null</sub>|<sub>null</sub>|"
+            );
+        internal static string List1_TableSmallerFontSizeFalseReplaceNulls = string.Concat(
+            "|Name|Wheels|",
+            Environment.NewLine,
+            "|---|---|",
+            Environment.NewLine,
+            "|Dodge Ram|4|",
+            Environment.NewLine,
+            "|Nissan Skyline|4|",
+            Environment.NewLine,
+            "|null|4|",
+            Environment.NewLine,
+            "|null|null|"
             );
 
         // Methods (public)
