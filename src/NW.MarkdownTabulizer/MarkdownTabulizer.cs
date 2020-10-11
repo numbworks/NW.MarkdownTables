@@ -31,7 +31,7 @@ namespace NW.MarkdownTabulizer
             if (obj == null)
                 throw new ArgumentNullException(nameof(obj));
 
-            return ToMarkdownRow(smallerFontSize, GetPropertyNames(obj));
+            return ToMarkdownRow(smallerFontSize, GetPropertyValues(obj));
 
         }
         public string ToMarkdownHeader
@@ -43,11 +43,11 @@ namespace NW.MarkdownTabulizer
             if (values.Length == 0)
                 throw new ArgumentException(MessageCollection.CantHaveZeroItems.Invoke(nameof(values)));
 
-            string header = ToMarkdownLine(smallerFontSize, values);
-            header += Environment.NewLine;
-            header += CreateMarkdownRow("---", (uint)values.Length);
-
-            return header;
+            return string.Concat(
+                    ToMarkdownLine(smallerFontSize, values),
+                    Environment.NewLine,
+                    CreateMarkdownRow("---", (uint)values.Length)
+                );
 
         }
         public string ToMarkdownHeader<T>(bool smallerFontSize, T obj)
@@ -56,7 +56,7 @@ namespace NW.MarkdownTabulizer
             if (obj == null)
                 throw new ArgumentNullException(nameof(obj));
 
-            return ToMarkdownHeader(smallerFontSize, GetPropertyValues(obj));
+            return ToMarkdownHeader(smallerFontSize, GetPropertyNames(obj));
 
         }
         public string ToMarkdownTable<T>(bool smallerFontSize, T obj)
@@ -65,10 +65,10 @@ namespace NW.MarkdownTabulizer
             if (obj == null)
                 throw new ArgumentNullException(nameof(obj));
 
-            return string.Join(
-                    ToMarkdownRow(smallerFontSize, GetPropertyNames(obj)),
+            return string.Concat(
+                    ToMarkdownHeader(smallerFontSize, GetPropertyNames(obj)),
                     Environment.NewLine,
-                    ToMarkdownHeader(smallerFontSize, GetPropertyValues(obj))
+                    ToMarkdownRow(smallerFontSize, GetPropertyValues(obj))
                 );
 
         }

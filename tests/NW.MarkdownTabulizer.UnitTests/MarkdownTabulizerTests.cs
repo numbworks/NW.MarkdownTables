@@ -140,22 +140,21 @@ namespace NW.MarkdownTabulizer.UnitTests
 
             new TestCaseData(
                     true,
-                    ObjectMother.ArrayRow1,
-                    ObjectMother.ArrayRow1_SmallerFontSizeTrue
+                    ObjectMother.Object1,
+                    ObjectMother.Object1_RowSmallerFontSizeTrue
                 ),
 
             new TestCaseData(
                     false,
-                    ObjectMother.ArrayRow1,
-                    ObjectMother.ArrayRow1_SmallerFontSizeFalse
-                )
+                    ObjectMother.Object1,
+                    ObjectMother.Object1_RowSmallerFontSizeFalse
+                ),
 
         };
-
         private static TestCaseData[] toMarkdownHeaderTestCases =
         {
 
-            new TestCaseData( 
+            new TestCaseData(
                     true,
                     ObjectMother.ArrayHeader1,
                     ObjectMother.ArrayHeader1_SmallerFontSizeTrue
@@ -166,6 +165,38 @@ namespace NW.MarkdownTabulizer.UnitTests
                     ObjectMother.ArrayHeader1,
                     ObjectMother.ArrayHeader1_SmallerFontSizeFalse
                 )
+
+        };
+        private static TestCaseData[] toMarkdownHeaderTypeTTestCases =
+        {
+
+            new TestCaseData(
+                    true,
+                    ObjectMother.Object1,
+                    ObjectMother.Object1_HeaderSmallerFontSizeTrue
+                ),
+
+            new TestCaseData(
+                    false,
+                    ObjectMother.Object1,
+                    ObjectMother.Object1_HeaderSmallerFontSizeFalse
+                ),
+
+        };
+        private static TestCaseData[] toMarkdownTableObjectTestCases =
+        {
+
+            new TestCaseData(
+                    true,
+                    ObjectMother.Object1,
+                    ObjectMother.Object1_TableSmallerFontSizeTrue
+                ),
+
+            new TestCaseData(
+                    false,
+                    ObjectMother.Object1,
+                    ObjectMother.Object1_TableSmallerFontSizeFalse
+                ),
 
         };
 
@@ -238,7 +269,6 @@ namespace NW.MarkdownTabulizer.UnitTests
 
         }
 
-
         [TestCaseSource(nameof(toMarkdownHeaderTestCases))]
         public void ToMarkdownHeader_ShouldReturnExpectedString_WhenProperArguments
             (bool smallerFontSize, string[] values, string expected)
@@ -247,6 +277,34 @@ namespace NW.MarkdownTabulizer.UnitTests
             // Arrange
             // Act
             string actual = new MarkdownTabulizer().ToMarkdownHeader(smallerFontSize, values);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+
+        }
+
+        [TestCaseSource(nameof(toMarkdownHeaderTypeTTestCases))]
+        public void ToMarkdownHeaderTypeT_ShouldReturnExpectedString_WhenProperArguments<T>
+            (bool smallerFontSize, T obj, string expected)
+        {
+
+            // Arrange
+            // Act
+            string actual = new MarkdownTabulizer().ToMarkdownHeader(smallerFontSize, obj);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+
+        }
+
+        [TestCaseSource(nameof(toMarkdownTableObjectTestCases))]
+        public void ToMarkdownTableObject_ShouldReturnExpectedString_WhenProperArguments<T>
+            (bool smallerFontSize, T obj, string expected)
+        {
+
+            // Arrange
+            // Act
+            string actual = new MarkdownTabulizer().ToMarkdownTable(smallerFontSize, obj);
 
             // Assert
             Assert.AreEqual(expected, actual);
