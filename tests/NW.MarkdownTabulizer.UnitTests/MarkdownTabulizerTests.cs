@@ -114,6 +114,20 @@ namespace NW.MarkdownTabulizer.UnitTests
                     ObjectMother.Line_Output_SmallerFontSizeFalseIsHeaderTrue
                 ),
 
+            new TestCaseData(
+                    true,
+                    false,
+                    ObjectMother.Line_Input_Row1,
+                    ObjectMother.Line_Output_SmallerFontSizeTrueIsHeaderFalse
+                ),
+
+            new TestCaseData(
+                    false,
+                    false,
+                    ObjectMother.Line_Input_Row1,
+                    ObjectMother.Line_Output_SmallerFontSizeFalseIsHeaderFalse
+                ),
+
         };
 
         // SetUp
