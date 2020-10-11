@@ -88,7 +88,7 @@ namespace NW.MarkdownTabulizer.UnitTests
                         .ToMarkdownTable(
                             false,
                             ObjectMother.NonExistantNullHandlingStrategy,
-                            ObjectMother.Table2_Input_List
+                            ObjectMother.List1
                         )),
                 typeof(ArgumentException),
                 MessageCollection.ProvidedNullHandlingStrategyNotValid.Invoke(ObjectMother.NonExistantNullHandlingStrategy)
@@ -119,35 +119,52 @@ namespace NW.MarkdownTabulizer.UnitTests
                 )
 
         };
-        private static TestCaseData[] toMarkdownHeaderTestCases =
-        {
-
-            new TestCaseData( 
-                    true,
-                    ObjectMother.Header_Input,
-                    ObjectMother.Header_Output_SmallerFontSizeTrue
-                ),
-
-            new TestCaseData(
-                    false,
-                    ObjectMother.Header_Input,
-                    ObjectMother.Header_Output_SmallerFontSizeFalse
-                )
-
-        };
         private static TestCaseData[] toMarkdownRowTestCases =
         {
 
             new TestCaseData(
                     true,
-                    ObjectMother.Row1_Input,
-                    ObjectMother.Row1_Output_SmallerFontSizeTrue
+                    ObjectMother.ArrayRow1,
+                    ObjectMother.ArrayRow1_SmallerFontSizeTrue
                 ),
 
             new TestCaseData(
                     false,
-                    ObjectMother.Row1_Input,
-                    ObjectMother.Row1_Output_SmallerFontSizeFalse
+                    ObjectMother.ArrayRow1,
+                    ObjectMother.ArrayRow1_SmallerFontSizeFalse
+                )
+
+        };
+        private static TestCaseData[] toMarkdownRowTypeTTestCases =
+        {
+
+            new TestCaseData(
+                    true,
+                    ObjectMother.ArrayRow1,
+                    ObjectMother.ArrayRow1_SmallerFontSizeTrue
+                ),
+
+            new TestCaseData(
+                    false,
+                    ObjectMother.ArrayRow1,
+                    ObjectMother.ArrayRow1_SmallerFontSizeFalse
+                )
+
+        };
+
+        private static TestCaseData[] toMarkdownHeaderTestCases =
+        {
+
+            new TestCaseData( 
+                    true,
+                    ObjectMother.ArrayHeader1,
+                    ObjectMother.ArrayHeader1_SmallerFontSizeTrue
+                ),
+
+            new TestCaseData(
+                    false,
+                    ObjectMother.ArrayHeader1,
+                    ObjectMother.ArrayHeader1_SmallerFontSizeFalse
                 )
 
         };
@@ -193,6 +210,35 @@ namespace NW.MarkdownTabulizer.UnitTests
 
         }
 
+        [TestCaseSource(nameof(toMarkdownRowTestCases))]
+        public void ToMarkdownRow_ShouldReturnExpectedString_WhenProperArguments
+            (bool smallerFontSize, string[] values, string expected)
+        {
+
+            // Arrange
+            // Act
+            string actual = new MarkdownTabulizer().ToMarkdownRow(smallerFontSize, values);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+
+        }
+
+        [TestCaseSource(nameof(toMarkdownRowTypeTTestCases))]
+        public void ToMarkdownRowTypeT_ShouldReturnExpectedString_WhenProperArguments<T>
+            (bool smallerFontSize, T obj, string expected)
+        {
+
+            // Arrange
+            // Act
+            string actual = new MarkdownTabulizer().ToMarkdownRow(smallerFontSize, obj);
+
+            // Assert
+            Assert.AreEqual(expected, actual);
+
+        }
+
+
         [TestCaseSource(nameof(toMarkdownHeaderTestCases))]
         public void ToMarkdownHeader_ShouldReturnExpectedString_WhenProperArguments
             (bool smallerFontSize, string[] values, string expected)
@@ -207,19 +253,6 @@ namespace NW.MarkdownTabulizer.UnitTests
 
         }
 
-        [TestCaseSource(nameof(toMarkdownRowTestCases))]
-        public void ToMarkdownRow_ShouldReturnExpectedString_WhenProperArguments
-            (bool smallerFontSize, string[] values, string expected)
-        {
-
-            // Arrange
-            // Act
-            string actual = new MarkdownTabulizer().ToMarkdownRow(smallerFontSize, values);
-
-            // Assert
-            Assert.AreEqual(expected, actual);
-
-        }
 
         // TearDown
         // Support methods
