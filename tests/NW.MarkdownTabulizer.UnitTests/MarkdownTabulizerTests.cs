@@ -116,6 +116,18 @@ namespace NW.MarkdownTabulizer.UnitTests
                         )),
                 typeof(ArgumentException),
                 MessageCollection.CantHaveZeroItems.Invoke("rows")
+                ),
+
+            new TestCaseData(
+                new TestDelegate( () =>
+                    new MarkdownTabulizer()
+                        .ToMarkdownTable(
+                            false,
+                            NullHandlingStrategies.DoNothing,
+                            ObjectMother.List1
+                        )),
+                typeof(ArgumentNullException),
+                new ArgumentNullException("obj").Message
                 )
 
         };
