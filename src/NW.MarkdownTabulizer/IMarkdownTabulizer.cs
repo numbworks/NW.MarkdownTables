@@ -9,8 +9,9 @@ namespace NW.MarkdownTabulizer
             (bool smallerFontSize, params string[] values);
         string ToMarkdownHeader
             (bool smallerFontSize, params string[] values);
-        string ToMarkdown<T>
-            (bool smallerFontSize, OutputOptions option, T obj);
+        string ToMarkdownRow<T>(bool smallerFontSize, T obj);
+        string ToMarkdownHeader<T>(bool smallerFontSize, T obj);
+        string ToMarkdownTable<T>(bool smallerFontSize, T obj);
         string ToMarkdownTable<T>
             (bool smallerFontSize, NullHandlingStrategies strategy, List<T> rows);
 

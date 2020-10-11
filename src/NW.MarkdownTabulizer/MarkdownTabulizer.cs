@@ -40,23 +40,30 @@ namespace NW.MarkdownTabulizer
 
             return header;
 
-        }       
-        public string ToMarkdown<T>
-            (bool smallerFontSize, OutputOptions option, T obj)
+        }
+        public string ToMarkdownRow<T>(bool smallerFontSize, T obj)
         {
 
-            if (option != OutputOptions.OnlyHeader
-                    && option != OutputOptions.OnlyRow
-                    && option != OutputOptions.FullTable)
-                throw new ArgumentException(MessageCollection.ProvidedOutputOptionNotValid.Invoke(option));
             if (obj == null)
                 throw new ArgumentNullException(nameof(obj));
 
-            if (option == OutputOptions.OnlyHeader)
-                return ToMarkdownRow(smallerFontSize, GetPropertyNames(obj));
+            return ToMarkdownRow(smallerFontSize, GetPropertyNames(obj));
 
-            if (option == OutputOptions.OnlyRow)
-                return ToMarkdownHeader(smallerFontSize, GetPropertyValues(obj));
+        }
+        public string ToMarkdownHeader<T>(bool smallerFontSize, T obj)
+        {
+
+            if (obj == null)
+                throw new ArgumentNullException(nameof(obj));
+
+            return ToMarkdownHeader(smallerFontSize, GetPropertyValues(obj));
+
+        }
+        public string ToMarkdownTable<T>(bool smallerFontSize, T obj)
+        {
+
+            if (obj == null)
+                throw new ArgumentNullException(nameof(obj));
 
             return string.Join(
                     ToMarkdownRow(smallerFontSize, GetPropertyNames(obj)),
