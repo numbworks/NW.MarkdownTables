@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 
-namespace NW.MarkdownTabulizer.UnitTests
+namespace NW.MarkdownTables.UnitTests
 {
     [TestFixture]
     public class MarkdownTabulizerTests

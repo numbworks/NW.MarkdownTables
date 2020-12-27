@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace NW.MarkdownTabulizer
+namespace NW.MarkdownTables
 {
     public interface IMarkdownTabulizer
     {

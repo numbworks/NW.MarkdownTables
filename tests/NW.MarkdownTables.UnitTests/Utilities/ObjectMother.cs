@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NW.MarkdownTabulizer.UnitTests
+namespace NW.MarkdownTables.UnitTests
 {
     internal static class ObjectMother
     {

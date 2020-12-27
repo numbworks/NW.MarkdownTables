@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NW.MarkdownTabulizer
+namespace NW.MarkdownTables
 {
     public static class MessageCollection
     {

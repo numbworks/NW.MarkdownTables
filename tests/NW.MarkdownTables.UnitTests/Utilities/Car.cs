@@ -1,4 +1,4 @@
-﻿namespace NW.MarkdownTabulizer.UnitTests
+﻿namespace NW.MarkdownTables.UnitTests
 {
     public class Car
     {
