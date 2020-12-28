@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>numbworks</Authors>
+    <Copyright>numbworks 2020</Copyright>
+    <PackageTags>markdown documentation library csharp netstandard tables data formatting</PackageTags>
+    <PackageIconUrl>https://raw.githubusercontent.com/numbworks/numbworks/master/numbworks_logo_128x128px.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/numbworks/NW.MarkdownTables</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/numbworks/NW.MarkdownTables</RepositoryUrl>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Description>NW.MarkdownTables is a .NET Standard 2.0 library written in `C#` to create Markdown tables out of the provided objects. It makes very easy to format objects in tabular format while logging and to create examples for the documentation of the project while developing it.</Description>
   </PropertyGroup>
 
 </Project>
