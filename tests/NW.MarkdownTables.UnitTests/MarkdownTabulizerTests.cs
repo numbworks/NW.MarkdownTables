@@ -99,7 +99,7 @@ namespace NW.MarkdownTables.UnitTests
                     new MarkdownTabulizer()
                         .ToMarkdownTable<Car>(
                             false,
-                            NullHandlingStrategies.RemoveNulls,
+                            NullHandlingStrategies.RemoveNullItems,
                             null
                         )),
                 typeof(ArgumentNullException),
@@ -111,7 +111,7 @@ namespace NW.MarkdownTables.UnitTests
                     new MarkdownTabulizer()
                         .ToMarkdownTable(
                             false,
-                            NullHandlingStrategies.RemoveNulls,
+                            NullHandlingStrategies.RemoveNullItems,
                             new List<Car>() { }
                         )),
                 typeof(ArgumentException),
@@ -123,7 +123,7 @@ namespace NW.MarkdownTables.UnitTests
                     new MarkdownTabulizer()
                         .ToMarkdownTable(
                             false,
-                            NullHandlingStrategies.DoNothing,
+                            NullHandlingStrategies.ThrowException,
                             ObjectMother.List1
                         )),
                 typeof(ArgumentNullException),
@@ -216,14 +216,14 @@ namespace NW.MarkdownTables.UnitTests
 
             new TestCaseData(
                     true,
-                    NullHandlingStrategies.RemoveNulls,
+                    NullHandlingStrategies.RemoveNullItems,
                     ObjectMother.List1,
                     ObjectMother.List1_TableSmallerFontSizeTrueRemoveNulls
                 ),
 
             new TestCaseData(
                     false,
-                    NullHandlingStrategies.RemoveNulls,
+                    NullHandlingStrategies.RemoveNullItems,
                     ObjectMother.List1,
                     ObjectMother.List1_TableSmallerFontSizeFalseRemoveNulls
                 ),

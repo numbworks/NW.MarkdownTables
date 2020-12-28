@@ -76,8 +76,8 @@ namespace NW.MarkdownTables
             (bool smallerFontSize, NullHandlingStrategies strategy, List<T> rows)
         {
 
-            if (strategy != NullHandlingStrategies.DoNothing
-                    && strategy != NullHandlingStrategies.RemoveNulls
+            if (strategy != NullHandlingStrategies.ThrowException
+                    && strategy != NullHandlingStrategies.RemoveNullItems
                     && strategy != NullHandlingStrategies.ReplaceNullsWithNullMarkdownLines)
                 throw new ArgumentException(MessageCollection.ProvidedNullHandlingStrategyNotValid.Invoke(strategy));
             if (rows == null)
@@ -85,7 +85,7 @@ namespace NW.MarkdownTables
             if (rows.Count == 0)
                 throw new ArgumentException(MessageCollection.CantHaveZeroItems.Invoke(nameof(rows)));
 
-            if (strategy == NullHandlingStrategies.RemoveNulls)
+            if (strategy == NullHandlingStrategies.RemoveNullItems)
                 rows = rows.Where(row => row != null).ToList();
 
             string str = ToMarkdownHeader(smallerFontSize, rows[0]); // Whatever object in the list is fine

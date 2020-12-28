@@ -7,10 +7,10 @@ namespace NW.MarkdownTables
     {
 
         /// <summary>If one row is null, an <seealso cref="ArgumentNullException"/> will be thrown.</summary>
-        DoNothing,
+        ThrowException,
 
         /// <summary>All the null rows will be removed from the provided <seealso cref="List{T}"/> before processing it.</summary>
-        RemoveNulls,
+        RemoveNullItems,
 
         /// <summary>All the null rows will be replaced with null Markdown lines.</summary>
         ReplaceNullsWithNullMarkdownLines,
