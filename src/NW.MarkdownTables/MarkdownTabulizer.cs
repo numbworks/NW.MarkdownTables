@@ -19,7 +19,6 @@ namespace NW.MarkdownTables
         #region Constructors
 
         /// <summary>Initializes a <see cref="MarkdownTabulizer"/> instance.</summary>
-        /// <exception cref="ArgumentNullException"/>
         public MarkdownTabulizer() { }
 
         #endregion
