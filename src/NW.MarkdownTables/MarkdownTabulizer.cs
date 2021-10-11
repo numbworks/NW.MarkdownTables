@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using NW.MarkdownTables.Messages;
 
 namespace NW.MarkdownTables
 {
@@ -185,8 +186,6 @@ namespace NW.MarkdownTables
 }
 
 /*
-
     Author: numbworks@gmail.com
     Last Update: 11.10.2021
-
 */
