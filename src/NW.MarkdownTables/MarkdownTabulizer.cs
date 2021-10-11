@@ -7,12 +7,20 @@ namespace NW.MarkdownTables
     public class MarkdownTabulizer : IMarkdownTabulizer
     {
 
-        // Fields
-        // Properties
-        // Constructors
+        #region Fields
+        #endregion
+
+        #region Properties
+        #endregion
+
+        #region Constructors
+
         public MarkdownTabulizer() { }
 
-        // Methods (public)
+        #endregion
+
+        #region Methods_public
+
         public string ToMarkdownRow
             (bool smallerFontSize, params string[] values)
         {
@@ -96,7 +104,10 @@ namespace NW.MarkdownTables
 
         }
 
-        // Methods (private)
+        #endregion
+
+        #region Methods_public
+
         private string ToMarkdownLine
             (bool smallerFontSize, params string[] values)
         {
@@ -141,11 +152,11 @@ namespace NW.MarkdownTables
 
             string str = string.Empty;
 
-            if (row == null 
+            if (row == null
                     && strategy == NullHandlingStrategies.ReplaceNullsWithNullMarkdownLines)
                 str += CreateMarkdownRow("null", GetPropertyCount(typeof(T)), smallerFontSize);
             else
-                str += ToMarkdownRow(smallerFontSize, row);          
+                str += ToMarkdownRow(smallerFontSize, row);
 
             return str;
 
@@ -168,12 +179,14 @@ namespace NW.MarkdownTables
 
         }
 
+        #endregion
+
     }
 }
 
 /*
 
     Author: numbworks@gmail.com
-    Last Update: 11.10.2020
+    Last Update: 11.10.2021
 
 */
