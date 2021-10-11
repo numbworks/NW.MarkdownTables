@@ -88,11 +88,11 @@ namespace NW.MarkdownTables.UnitTests
                     new MarkdownTabulizer()
                         .ToMarkdownTable(
                             false,
-                            ObjectMother.NonExistantNullHandlingStrategy,
-                            ObjectMother.List1
+                            ObjectMother.MarkdownTabulizer_NonExistantNullHandlingStrategy,
+                            ObjectMother.MarkdownTabulizer_List1
                         )),
                 typeof(ArgumentException),
-                MessageCollection.ProvidedNullHandlingStrategyNotValid.Invoke(ObjectMother.NonExistantNullHandlingStrategy)
+                MessageCollection.ProvidedNullHandlingStrategyNotValid.Invoke(ObjectMother.MarkdownTabulizer_NonExistantNullHandlingStrategy)
                 ),
 
             new TestCaseData(
@@ -125,7 +125,7 @@ namespace NW.MarkdownTables.UnitTests
                         .ToMarkdownTable(
                             false,
                             NullHandlingStrategies.ThrowException,
-                            ObjectMother.List1
+                            ObjectMother.MarkdownTabulizer_List1
                         )),
                 typeof(ArgumentNullException),
                 new ArgumentNullException("obj").Message
@@ -137,14 +137,14 @@ namespace NW.MarkdownTables.UnitTests
 
             new TestCaseData(
                     true,
-                    ObjectMother.ArrayRow1,
-                    ObjectMother.ArrayRow1_SmallerFontSizeTrue
+                    ObjectMother.MarkdownTabulizer_ArrayRow1,
+                    ObjectMother.MarkdownTabulizer_ArrayRow1_SmallerFontSizeTrue
                 ),
 
             new TestCaseData(
                     false,
-                    ObjectMother.ArrayRow1,
-                    ObjectMother.ArrayRow1_SmallerFontSizeFalse
+                    ObjectMother.MarkdownTabulizer_ArrayRow1,
+                    ObjectMother.MarkdownTabulizer_ArrayRow1_SmallerFontSizeFalse
                 )
 
         };
@@ -153,14 +153,14 @@ namespace NW.MarkdownTables.UnitTests
 
             new TestCaseData(
                     true,
-                    ObjectMother.Object1,
-                    ObjectMother.Object1_RowSmallerFontSizeTrue
+                    ObjectMother.MarkdownTabulizer_Object1,
+                    ObjectMother.MarkdownTabulizer_Object1_RowSmallerFontSizeTrue
                 ),
 
             new TestCaseData(
                     false,
-                    ObjectMother.Object1,
-                    ObjectMother.Object1_RowSmallerFontSizeFalse
+                    ObjectMother.MarkdownTabulizer_Object1,
+                    ObjectMother.MarkdownTabulizer_Object1_RowSmallerFontSizeFalse
                 ),
 
         };
@@ -169,14 +169,14 @@ namespace NW.MarkdownTables.UnitTests
 
             new TestCaseData(
                     true,
-                    ObjectMother.ArrayHeader1,
-                    ObjectMother.ArrayHeader1_SmallerFontSizeTrue
+                    ObjectMother.MarkdownTabulizer_ArrayHeader1,
+                    ObjectMother.MarkdownTabulizer_ArrayHeader1_SmallerFontSizeTrue
                 ),
 
             new TestCaseData(
                     false,
-                    ObjectMother.ArrayHeader1,
-                    ObjectMother.ArrayHeader1_SmallerFontSizeFalse
+                    ObjectMother.MarkdownTabulizer_ArrayHeader1,
+                    ObjectMother.MarkdownTabulizer_ArrayHeader1_SmallerFontSizeFalse
                 )
 
         };
@@ -185,14 +185,14 @@ namespace NW.MarkdownTables.UnitTests
 
             new TestCaseData(
                     true,
-                    ObjectMother.Object1,
-                    ObjectMother.Object1_HeaderSmallerFontSizeTrue
+                    ObjectMother.MarkdownTabulizer_Object1,
+                    ObjectMother.MarkdownTabulizer_Object1_HeaderSmallerFontSizeTrue
                 ),
 
             new TestCaseData(
                     false,
-                    ObjectMother.Object1,
-                    ObjectMother.Object1_HeaderSmallerFontSizeFalse
+                    ObjectMother.MarkdownTabulizer_Object1,
+                    ObjectMother.MarkdownTabulizer_Object1_HeaderSmallerFontSizeFalse
                 ),
 
         };
@@ -201,14 +201,14 @@ namespace NW.MarkdownTables.UnitTests
 
             new TestCaseData(
                     true,
-                    ObjectMother.Object1,
-                    ObjectMother.Object1_TableSmallerFontSizeTrue
+                    ObjectMother.MarkdownTabulizer_Object1,
+                    ObjectMother.MarkdownTabulizer_Object1_TableSmallerFontSizeTrue
                 ),
 
             new TestCaseData(
                     false,
-                    ObjectMother.Object1,
-                    ObjectMother.Object1_TableSmallerFontSizeFalse
+                    ObjectMother.MarkdownTabulizer_Object1,
+                    ObjectMother.MarkdownTabulizer_Object1_TableSmallerFontSizeFalse
                 ),
 
         };
@@ -218,29 +218,29 @@ namespace NW.MarkdownTables.UnitTests
             new TestCaseData(
                     true,
                     NullHandlingStrategies.RemoveNullItems,
-                    ObjectMother.List1,
-                    ObjectMother.List1_TableSmallerFontSizeTrueRemoveNulls
+                    ObjectMother.MarkdownTabulizer_List1,
+                    ObjectMother.MarkdownTabulizer_List1_TableSmallerFontSizeTrueRemoveNulls
                 ),
 
             new TestCaseData(
                     false,
                     NullHandlingStrategies.RemoveNullItems,
-                    ObjectMother.List1,
-                    ObjectMother.List1_TableSmallerFontSizeFalseRemoveNulls
+                    ObjectMother.MarkdownTabulizer_List1,
+                    ObjectMother.MarkdownTabulizer_List1_TableSmallerFontSizeFalseRemoveNulls
                 ),
 
             new TestCaseData(
                     true,
                     NullHandlingStrategies.ReplaceNullsWithNullMarkdownLines,
-                    ObjectMother.List1,
-                    ObjectMother.List1_TableSmallerFontSizeTrueReplaceNulls
+                    ObjectMother.MarkdownTabulizer_List1,
+                    ObjectMother.MarkdownTabulizer_List1_TableSmallerFontSizeTrueReplaceNulls
                 ),
 
             new TestCaseData(
                     false,
                     NullHandlingStrategies.ReplaceNullsWithNullMarkdownLines,
-                    ObjectMother.List1,
-                    ObjectMother.List1_TableSmallerFontSizeFalseReplaceNulls
+                    ObjectMother.MarkdownTabulizer_List1,
+                    ObjectMother.MarkdownTabulizer_List1_TableSmallerFontSizeFalseReplaceNulls
                 )
 
         };
