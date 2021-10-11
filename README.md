@@ -8,12 +8,13 @@ Contact: numbworks@gmail.com
 | Date | Author | Description |
 |---|---|---|
 | 2020-12-27 | numbworks | Created. |
+| 2021-10-11 | numbworks | Version numbers removed. |
 
 ## In Short
 
 From the documentation:
 
-> `NW.MarkdownTables` is a `.NET Standard 2.0` library written in `C#` to create Markdown tables out of the provided objects. 
+> `NW.MarkdownTables` is a `.NET Standard` library written in `C#` to create Markdown tables out of the provided objects. 
 
 > It makes very easy to format objects in tabular format while logging and to create examples for the documentation of the project while developing it.
 
@@ -30,7 +31,7 @@ PS C:\> cd .\NW.MarkdownTables\
 PS C:\NW.MarkdownTables> git clone https://github.com/numbworks/NW.MarkdownTables.git
 ```
 
-3. Open `NW.MarkdownTables.sln` with `Visual Studio 2017` or other IDE;
+3. Open `NW.MarkdownTables.sln` with `Visual Studio` or other IDE;
 4. Done!
 
 ## Download the binary packages
