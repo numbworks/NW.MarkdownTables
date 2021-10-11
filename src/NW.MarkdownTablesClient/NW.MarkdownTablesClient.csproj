@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>numbworks</Authors>
     <Copyright>numbworks 2021</Copyright>
     <Description>Collection of examples for NW.MarkdownTables.</Description>
