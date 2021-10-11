@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace NW.MarkdownTables.Strategies
 {
+    /// <summary>Collects all the null handling strategies.</summary>
     public enum NullHandlingStrategies
     {
 
