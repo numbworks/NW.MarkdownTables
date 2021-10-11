@@ -3,6 +3,7 @@ v2.0.0 - BREAKING CHANGES
 - Added XML documentation for all the methods and constructors (summaries).
 - Re-organized part of the unit tests (shared items in ObjectMother).
 - NW.MarkdownTables: .NET Standard 2.0 => 2.1.
+- NW.MarkdownTables.UnitTests, NW.MarkdownTablesClient: .NET Core 2.1  => 3.1.
 
 v1.0.0
 - Initial release.
