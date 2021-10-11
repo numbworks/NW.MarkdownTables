@@ -6,8 +6,8 @@ namespace NW.MarkdownTables.UnitTests
     internal static class ObjectMother
     {
 
-        // Fields
-        // Properties
+        #region MarkdownTabulizer
+
         internal static string[] ArrayHeader1
             = new string[] { "BookTitle", "Year", "Pages", "ReadDate", "Publisher" };
         internal static string ArrayHeader1_SmallerFontSizeTrue = string.Concat(
@@ -129,8 +129,7 @@ namespace NW.MarkdownTables.UnitTests
             "|null|null|"
             );
 
-        // Methods (public)
-        // Methods (private)
+        #endregion
 
     }
 }
@@ -138,6 +137,6 @@ namespace NW.MarkdownTables.UnitTests
 /*
 
     Author: numbworks@gmail.com
-    Last Update: 11.10.2020
+    Last Update: 11.10.2021
 
 */
