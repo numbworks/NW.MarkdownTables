@@ -8,13 +8,14 @@ namespace NW.MarkdownTables.UnitTests
     public class MarkdownTabulizerTests
     {
 
-        // Fields
+        #region Fields
+
         private static TestCaseData[] toMarkdownRowExceptions =
         {
 
             // ToMarkdownRow()
             new TestCaseData(
-                new TestDelegate( () => 
+                new TestDelegate( () =>
                     new MarkdownTabulizer().ToMarkdownRow(false, null)
                 ),
                 typeof(ArgumentNullException),
@@ -244,8 +245,13 @@ namespace NW.MarkdownTables.UnitTests
 
         };
 
-        // SetUp
-        // Tests
+        #endregion
+
+        #region SetUp
+        #endregion
+
+        #region Tests
+
         [TestCaseSource(nameof(toMarkdownRowExceptions))]
         public void ToMarkdownRow_ShouldThrowACertainException_WhenUnproperArguments
             (TestDelegate del, Type tyExpected, string strMessage)
@@ -369,8 +375,10 @@ namespace NW.MarkdownTables.UnitTests
 
         }
 
-        // TearDown
-        // Support methods
+        #endregion
+
+        #region TearDown
+        #endregion
 
     }
 }
@@ -378,6 +386,6 @@ namespace NW.MarkdownTables.UnitTests
 /*
 
     Author: rua@sitecore.net
-    Last Update: 11.10.2020
+    Last Update: 11.10.2021
 
 */
