@@ -1,7 +1,7 @@
 v2.0.0 - BREAKING CHANGES
 - Added support for sub-namespaces.
 - Added XML documentation for all the methods and constructors (summaries).
-- Re-organized part of the unit tests (shared items in ObjectMother).
+- Re-organized part of the unit tests (adapted member names to the newest NW convention in ObjectMother).
 - NW.MarkdownTables: .NET Standard 2.0 => 2.1.
 - NW.MarkdownTables.UnitTests, NW.MarkdownTablesClient: .NET Core 2.1  => 3.1.
 
