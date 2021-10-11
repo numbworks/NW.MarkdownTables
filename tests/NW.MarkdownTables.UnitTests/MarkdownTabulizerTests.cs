@@ -384,8 +384,6 @@ namespace NW.MarkdownTables.UnitTests
 }
 
 /*
-
-    Author: rua@sitecore.net
+    Author: numbworks@gmail.com
     Last Update: 11.10.2021
-
 */
