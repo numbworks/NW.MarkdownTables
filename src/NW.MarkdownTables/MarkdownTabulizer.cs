@@ -6,6 +6,7 @@ using NW.MarkdownTables.Strategies;
 
 namespace NW.MarkdownTables
 {
+    /// <inheritdoc cref="IMarkdownTabulizer"/>
     public class MarkdownTabulizer : IMarkdownTabulizer
     {
 
@@ -17,14 +18,15 @@ namespace NW.MarkdownTables
 
         #region Constructors
 
+        /// <summary>Initializes a <see cref="MarkdownTabulizer"/> instance.</summary>
+        /// <exception cref="ArgumentNullException"/>
         public MarkdownTabulizer() { }
 
         #endregion
 
         #region Methods_public
 
-        public string ToMarkdownRow
-            (bool smallerFontSize, params string[] values)
+        public string ToMarkdownRow(bool smallerFontSize, params string[] values)
         {
 
             if (values == null)
@@ -44,8 +46,8 @@ namespace NW.MarkdownTables
             return ToMarkdownRow(smallerFontSize, GetPropertyValues(obj));
 
         }
-        public string ToMarkdownHeader
-            (bool smallerFontSize, params string[] values)
+        
+        public string ToMarkdownHeader(bool smallerFontSize, params string[] values)
         {
 
             if (values == null)
@@ -69,6 +71,7 @@ namespace NW.MarkdownTables
             return ToMarkdownHeader(smallerFontSize, GetPropertyNames(obj));
 
         }
+        
         public string ToMarkdownTable<T>(bool smallerFontSize, T obj)
         {
 
@@ -82,8 +85,7 @@ namespace NW.MarkdownTables
                 );
 
         }
-        public string ToMarkdownTable<T>
-            (bool smallerFontSize, NullHandlingStrategies strategy, List<T> rows)
+        public string ToMarkdownTable<T>(bool smallerFontSize, NullHandlingStrategies strategy, List<T> rows)
         {
 
             if (strategy != NullHandlingStrategies.ThrowException
@@ -110,8 +112,7 @@ namespace NW.MarkdownTables
 
         #region Methods_public
 
-        private string ToMarkdownLine
-            (bool smallerFontSize, params string[] values)
+        private string ToMarkdownLine(bool smallerFontSize, params string[] values)
         {
 
             string line = $"|{string.Join("|", values)}|";
@@ -121,8 +122,7 @@ namespace NW.MarkdownTables
             return line;
 
         }
-        private string CreateMarkdownRow
-            (string token, uint length, bool includeSubTags = false)
+        private string CreateMarkdownRow(string token, uint length, bool includeSubTags = false)
         {
 
             string[] repetitions = Enumerable.Repeat(token, (int)length).ToArray();
@@ -148,8 +148,7 @@ namespace NW.MarkdownTables
         }
         private uint GetPropertyCount(Type t)
             => (uint)t.GetProperties().Length;
-        private string ProcessRow<T>
-            (bool smallerFontSize, NullHandlingStrategies strategy, T row)
+        private string ProcessRow<T>(bool smallerFontSize, NullHandlingStrategies strategy, T row)
         {
 
             string str = string.Empty;
@@ -163,8 +162,7 @@ namespace NW.MarkdownTables
             return str;
 
         }
-        private string ProcessRows<T>
-            (bool smallerFontSize, NullHandlingStrategies strategy, List<T> rows)
+        private string ProcessRows<T>(bool smallerFontSize, NullHandlingStrategies strategy, List<T> rows)
         {
 
             string str = Environment.NewLine;
