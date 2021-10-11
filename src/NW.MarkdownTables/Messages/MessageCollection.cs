@@ -1,4 +1,5 @@
 ﻿using System;
+using NW.MarkdownTables.Strategies;
 
 namespace NW.MarkdownTables.Messages
 {

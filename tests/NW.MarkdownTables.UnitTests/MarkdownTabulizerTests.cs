@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using NW.MarkdownTables.Messages;
+using NW.MarkdownTables.Strategies;
 
 namespace NW.MarkdownTables.UnitTests
 {

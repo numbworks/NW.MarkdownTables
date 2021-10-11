@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic; 
 using NW.MarkdownTables;
+using NW.MarkdownTables.Strategies;
 
 namespace NW.MarkdownTablesClient
 {
@@ -94,3 +95,8 @@ namespace NW.MarkdownTablesClient
     }
 
 }
+
+/*
+    Author: numbworks@gmail.com
+    Last Update: 11.10.2021
+*/

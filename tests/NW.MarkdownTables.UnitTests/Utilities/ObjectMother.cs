@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using NW.MarkdownTables.Strategies;
 
 namespace NW.MarkdownTables.UnitTests
 {

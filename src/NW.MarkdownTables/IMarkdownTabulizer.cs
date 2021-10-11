@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using NW.MarkdownTables.Strategies;
 
 namespace NW.MarkdownTables
 {
@@ -19,8 +20,6 @@ namespace NW.MarkdownTables
 }
 
 /*
-
     Author: numbworks@gmail.com
-    Last Update: 11.10.2020
-
+    Last Update: 11.10.2021
 */

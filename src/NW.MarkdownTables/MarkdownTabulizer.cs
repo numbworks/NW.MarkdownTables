@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Collections.Generic;
 using NW.MarkdownTables.Messages;
+using NW.MarkdownTables.Strategies;
 
 namespace NW.MarkdownTables
 {
