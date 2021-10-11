@@ -3,6 +3,7 @@ using NW.MarkdownTables.Strategies;
 
 namespace NW.MarkdownTables.Messages
 {
+    ///<summary>Collects all the messages used for logging and exceptions.</summary>
     public static class MessageCollection
     {
 
