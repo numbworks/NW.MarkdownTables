@@ -3,23 +3,29 @@
     public class Car
     {
 
-        // Fields
-        // Properties
+        #region Fields
+        #endregion
+
+        #region Properties
+
         public string Name { set; get; }
         public int Wheels { set; get; }
 
-        // Constructors
+        #endregion
+
+        #region Constructors
+
         public Car() { }
 
-        // Methods (public)
-        // Methods (private)
+        #endregion
+
+        #region Methods_public
+        #endregion
 
     }
 }
 
 /*
-
     Author: numbworks@gmail.com
-    Last Update: 11.10.2020
-
+    Last Update: 11.10.2021
 */
