@@ -263,7 +263,7 @@ namespace NW.MarkdownTables.UnitTests
             // Act
             // Assert
             Exception objActual = Assert.Throws(tyExpected, del);
-            Assert.AreEqual(strMessage, objActual.Message);
+            Assert.That(strMessage, Is.EqualTo(objActual.Message));
 
         }
 
@@ -276,7 +276,7 @@ namespace NW.MarkdownTables.UnitTests
             // Act
             // Assert
             Exception objActual = Assert.Throws(tyExpected, del);
-            Assert.AreEqual(strMessage, objActual.Message);
+            Assert.That(strMessage, Is.EqualTo(objActual.Message));
 
         }
 
@@ -289,7 +289,7 @@ namespace NW.MarkdownTables.UnitTests
             // Act
             // Assert
             Exception objActual = Assert.Throws(tyExpected, del);
-            Assert.AreEqual(strMessage, objActual.Message);
+            Assert.That(strMessage, Is.EqualTo(objActual.Message));
 
         }
 
@@ -303,7 +303,7 @@ namespace NW.MarkdownTables.UnitTests
             string actual = new MarkdownTabulizer().ToMarkdownRow(smallerFontSize, values);
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.That(expected, Is.EqualTo(actual));
 
         }
 
@@ -317,7 +317,7 @@ namespace NW.MarkdownTables.UnitTests
             string actual = new MarkdownTabulizer().ToMarkdownRow(smallerFontSize, obj);
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.That(expected, Is.EqualTo(actual));
 
         }
 
@@ -331,7 +331,7 @@ namespace NW.MarkdownTables.UnitTests
             string actual = new MarkdownTabulizer().ToMarkdownHeader(smallerFontSize, values);
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.That(expected, Is.EqualTo(actual));
 
         }
 
@@ -345,7 +345,7 @@ namespace NW.MarkdownTables.UnitTests
             string actual = new MarkdownTabulizer().ToMarkdownHeader(smallerFontSize, obj);
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.That(expected, Is.EqualTo(actual));
 
         }
 
@@ -359,7 +359,7 @@ namespace NW.MarkdownTables.UnitTests
             string actual = new MarkdownTabulizer().ToMarkdownTable(smallerFontSize, obj);
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.That(expected, Is.EqualTo(actual));
 
         }
 
@@ -373,7 +373,7 @@ namespace NW.MarkdownTables.UnitTests
             string actual = new MarkdownTabulizer().ToMarkdownTable(smallerFontSize, strategy, rows);
 
             // Assert
-            Assert.AreEqual(expected, actual);
+            Assert.That(expected, Is.EqualTo(actual));
 
         }
 
@@ -387,5 +387,5 @@ namespace NW.MarkdownTables.UnitTests
 
 /*
     Author: numbworks@gmail.com
-    Last Update: 11.10.2021
+    Last Update: 18.01.2024
 */
