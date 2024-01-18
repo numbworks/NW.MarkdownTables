@@ -7,11 +7,11 @@ Contact: numbworks@gmail.com
 |---|---|---|
 | 2020-12-27 | numbworks | Created. |
 | 2021-10-11 | numbworks | Version numbers removed. |
-
+| 2024-01-18 | numbworks | Updated to v3.0.0. |
 
 ## Introduction
 
-`NW.MarkdownTables` is a `.NET Standard` library written in `C#` to create Markdown tables out of the provided objects. 
+`NW.MarkdownTables` is a library written in `C#` to create Markdown tables out of the provided objects. 
 
 It makes very easy to format objects in tabular format while logging and to create examples for the documentation of the project while developing it.
 
